@@ -23,7 +23,6 @@ class Provider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeCubit()),
-        BlocProvider(create: (context) => TimerCountDownBloc(sl())),
       ],
       child: child,
     );

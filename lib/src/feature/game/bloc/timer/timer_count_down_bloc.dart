@@ -18,6 +18,11 @@ class TimerCountDownBloc
 
   StreamSubscription<int>? _tickerSubscription;
   late Emitter<TimerCountDownState> _emit;
+  @override
+  Future<void> close() {
+    _tickerSubscription?.cancel();
+    return super.close();
+  }
 
   TimerCountDownBloc(this._countDownTimerRepo)
       : super(const TimerCountDownState.initial(_introDuration)) {

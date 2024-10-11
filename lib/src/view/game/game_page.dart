@@ -113,10 +113,8 @@ class _GamePageState extends State<GamePage> {
                     context
                         .read<TimerCountDownBloc>()
                         .add(const TimerCountDownEvent.introCountDownStart());
-                    context
-                        .read<GameBloc>()
-                        .add(const GameEvent.playAgain());
-                        log("close popup");
+                    context.read<GameBloc>().add(const GameEvent.playAgain());
+                    log("close popup");
                     Navigator.pop(context);
                   },
                   child: const Text("PLAY AGAIN"),
