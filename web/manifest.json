@@ -1,6 +1,6 @@
 {
-    "name": "connect_four",
-    "short_name": "connect_four",
+    "name": "client",
+    "short_name": "client",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
