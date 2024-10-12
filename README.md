@@ -1,16 +1,17 @@
-# connect_four
+## 🕹️GRID CLASH 
 
-A new Flutter project.
+Its the Connect Four game. 
 
-## Getting Started
+You can try it on [GRID CLASH](https://ehsan-abaci.github.io/grid-clash/)
 
-This project is a starting point for a Flutter application.
+## Modes
 
-A few resources to get you started if this is your first Flutter project:
+● Player vs Player
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+● Player vs Bot
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+● Online (comming soon)
+
+## Demo
+
+<img src="https://github.com/user-attachments/assets/8b81c254-d0ad-4513-a876-c56d8e99c5e2" width=250> 
