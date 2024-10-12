@@ -14,4 +14,4 @@ You can try it on [GRID CLASH](https://ehsan-abaci.github.io/grid-clash/)
 
 ## Demo
 
-<img src="https://github.com/user-attachments/assets/8b81c254-d0ad-4513-a876-c56d8e99c5e2" width=250> 
+<img src="https://github.com/user-attachments/assets/8b81c254-d0ad-4513-a876-c56d8e99c5e2" width=500> 
