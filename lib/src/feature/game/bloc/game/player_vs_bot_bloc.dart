@@ -90,7 +90,7 @@ class PlayerVsBotBloc extends GameBloc {
     ));
     await _checkWinner(updatedGame, game);
 
-    await Future.delayed(const Duration(seconds: 3));
+    // await Future.delayed(const Duration(seconds: 1));
 
     updatedGame = await makeMoveBotUsecase(updatedGame);
 

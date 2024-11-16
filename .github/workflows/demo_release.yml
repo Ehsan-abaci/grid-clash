@@ -1,0 +1,88 @@
+# This is the name of the workflow. It will appear in the GitHub Actions UI.
+name: Build Web app and APK files
+
+on:
+  push:
+    tags:
+      - 'dev*.*.*'
+    branches:
+      - develop
+
+env:
+  APK_PATH: build/app/outputs/flutter-apk/app-release.apk
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: '17.x' 
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+        flutter-version: '3.24.2'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Enable Web
+      run: flutter config --enable-web
+
+    - name: Build Web
+      run: flutter build web --web-renderer canvaskit
+
+    - run: ls build/web
+
+    # Deploy the web build to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        publish_dir: ./build/web
+
+    - name: Build APK
+      run: flutter build apk
+
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release
+        path: ${{ env.APK_PATH }}
+
+    - name: Send Message to Telegram on Success
+      if: success()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        document: ${{ env.APK_PATH }}
+        message: |
+          ✔ Successful deployment on develop (Flutter):
+
+          ${{ github.event.head_commit.message }}
+    
+          by ${{ github.event.head_commit.committer.name }} (${{ github.event.head_commit.committer.username }})
+          
+          ${{ github.event.head_commit.url }}
+
+    - name: Send Message to Telegram on Failure
+      if: failure()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: |
+          ❌ Failed deployment on develop (Flutter):
+    
+          ${{ github.event.head_commit.message }}
+    
+          by ${{ github.event.head_commit.committer.name }} (${{ github.event.head_commit.committer.username }})
+
+          ${{ github.event.head_commit.url }}

@@ -126,7 +126,6 @@ class _GamePageState extends State<GamePage> {
   BlocConsumer<TimerCountDownBloc, TimerCountDownState> _getIntroTimer() {
     return BlocConsumer<TimerCountDownBloc, TimerCountDownState>(
       builder: (context, state) {
-        log(state.toString());
         return state.maybeWhen(
           completeIntro: () => const Align(),
           inProgressIntro: (duration) {
