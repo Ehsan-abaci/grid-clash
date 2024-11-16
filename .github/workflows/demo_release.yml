@@ -51,9 +51,10 @@ jobs:
 
     # Deploy the web build to GitHub Pages
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
 
     - name: Build APK
       run: flutter build apk
@@ -73,6 +74,8 @@ jobs:
         document: ${{ env.APK_PATH }}
         message: |
           ✔ Successful deployment on develop (Flutter):
+
+          There is a new release: ${{ secrets.PROJECT_WEB_URL }}
 
           ${{ github.event.head_commit.message }}
     
