@@ -6,7 +6,7 @@ on:
     tags:
       - 'dev*.*.*'
     branches:
-      - develop
+      - master
 
 env:
   APK_PATH: build/app/outputs/flutter-apk/app-release.apk
