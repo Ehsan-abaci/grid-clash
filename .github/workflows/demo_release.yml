@@ -42,19 +42,12 @@ jobs:
     - name: Build Web
       run: flutter build web --web-renderer canvaskit
 
-    - run: ls build/web
-
-    - name: Upload GitHub Pages artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: build/web
-
     # Deploy the web build to GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: build/web
 
     - name: Build APK
       run: flutter build apk
