@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   APK_PATH: build/app/outputs/flutter-apk/app-release.apk
 
