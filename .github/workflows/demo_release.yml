@@ -40,7 +40,7 @@ jobs:
       run: flutter config --enable-web
 
     - name: Build Web
-      run: flutter build web --web-renderer canvaskit
+      run: flutter build web --release
 
     # Deploy the web build to GitHub Pages
     - name: Deploy to GitHub Pages
